@@ -12,7 +12,7 @@
     USERID=$(id -u)
     if [ $USERID -ne 0 ];
     then
-    echo "$R ERROR ::$N $USERID not a root User"
+    echo "$R ERROR $N $USERID not a root User"
     exit 1
     else 
     echo "SUCCESS :: Root User Login Successfull"
