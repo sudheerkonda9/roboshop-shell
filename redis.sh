@@ -33,7 +33,7 @@ validate $? "Installing redis repo all versions"
 yum module enable redis:remi-6.2 -y &>> $LOGFILE
 validate $? "enabling 6.2 redis"
 
-sed -i 's/127.0.0.1/0.0.0.0/g' /etc/redis.conf &>> $LOGFILE
+sed -i 's/127.0.0.1/0.0.0.0/g' /etc/redis.conf /etc/redis.conf &>> $LOGFILE
 validate $? "Redis configuration file update"
 
 systemctl enable redis &>> $LOGFILE
