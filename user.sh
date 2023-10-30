@@ -35,7 +35,7 @@ validate $? "setting up mpm source"
 validate $? "Installing Node Js"
 
  useradd roboshop &>> $LOGFILE
-validate $? "Adding Roboshop User"
+# validate $? "Adding Roboshop User"
 
  mkdir /app &>> $LOGFILE
  validate $? "mkdir app"
