@@ -16,7 +16,7 @@
     exit 1
     else 
     echo "SUCCESS :: Root User Login Successfull"
-    
+    fi
     validate () {
     if [ $1 -ne 0 ];
     then
@@ -25,8 +25,7 @@
     else
      echo "$2 .... $G SUCCESS!!! $N"
      fi
-
-    }
+ }
 
 # it will invoke mongo.repo file and throuh URL present in mongo.repo ,it will download and save the files in path /etc/yum.repos.d/mongo.repo
 cp mango.repo /etc/yum.repos.d/mongo.repo &>> $LOGFILE
