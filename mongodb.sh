@@ -46,7 +46,3 @@ validate $? "Edited the file mongod.conf"
 
 systemctl restart mongod &>> $LOGFILE
 validate $? "Re-Starting mongod"
-
-
-
-
