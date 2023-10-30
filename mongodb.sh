@@ -1,6 +1,6 @@
     #!/bin/bash
     LOGFILE_DIRECTORY=/tmp
-    DATE=$(date +%F:%H:%M:%S)
+    DATE=$(date +%F)
     SCRIPT_NAME=$0
     LOGFILE=$LOGFILE_DIRECTORY/$SCRIPT_NAME-$DATE.log
 
@@ -40,7 +40,7 @@ validate $? "Enabled mongod"
 systemctl start mongod &>> $LOGFILE
 validate $? "Starting mongod"
 
-sed -i '/s/127.0.0.1/0.0.0.0/' /etc/mongod.conf &>> $LOGFILE
+sed -i 's/127.0.0.1/0.0.0.0/' /etc/mongod.conf &>> $LOGFILE
 validate $? "Edited the file mongod.conf"
 
 systemctl restart mongod &>> $LOGFILE
