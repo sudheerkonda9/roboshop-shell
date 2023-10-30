@@ -15,7 +15,7 @@
     echo -e "$R ERROR $N $USERID not a root User"
     exit 1
     else 
-    echo "SUCCESS :: Root User Login Successfull"
+    echo -e "$G SUCCESS :: Root User Login Successfull $N"
     fi
     validate () {
     if [ $1 -ne 0 ];
@@ -27,8 +27,8 @@
      fi
  }
 
-# it will invoke mongo.repo file and throuh URL present in mongo.repo ,it will download and save the files in path /etc/yum.repos.d/mongo.repo
-cp mango.repo /etc/yum.repos.d/mongo.repo &>> $LOGFILE
+# it will invoke mongo.repo file and throuh URL present in mongo.repo ,it will download and save the #files in path /etc/yum.repos.d/mongo.repo
+cp mongo.repo /etc/yum.repos.d/mongo.repo &>> $LOGFILE
 validate $? "Copied mongo.repo into yum.repos.d"
 
 yum install mongodb-org -y &>> $LOGFILE
