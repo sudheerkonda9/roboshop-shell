@@ -12,7 +12,7 @@
     USERID=$(id -u)
     if [ $USERID -ne 0 ];
     then
-    echo "$R ERROR $USERID not a root User $N"
+    echo -e "$R ERROR $N $USERID not a root User"
     exit 1
     else 
     echo "SUCCESS :: Root User Login Successfull"
@@ -20,10 +20,10 @@
     validate () {
     if [ $1 -ne 0 ];
     then
-    echo "$2 .... $R FAILED $N"
+    echo -e "$2 .... $R FAILED $N"
     exit 1
     else
-     echo "$2 .... $G SUCCESS!!! $N"
+     echo -e "$2 .... $G SUCCESS!!! $N"
      fi
  }
 
