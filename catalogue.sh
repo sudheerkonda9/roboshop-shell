@@ -42,25 +42,25 @@
  mkdir /app &>> $LOGFILE
  validate $? "mkdir app"
 
- curl -o /tmp/catalogue.zip https://roboshop-builds.s3.amazonaws.com/catalogue.zip
- validate $? "downloading catalogue zip file in to /tmp folder"
+ curl -o /tmp/catalogue.zip https://roboshop-builds.s3.amazonaws.com/catalogue.zip &>> $LOGFILE
+ validate $? "downloading catalogue artifact zip file in to /tmp folder"
 
  cd /app &>> $LOGFILE
- validate $? "CD app 1"
+ validate $? "Moving in to App directory"
 
  unzip /tmp/catalogue.zip &>> $LOGFILE
   validate $? "UnZipping catalogue.zip in /tmp"
 
- cd /app &>> $LOGFILE
- validate $? "CD app2"
+#  cd /app &>> $LOGFILE
+# // validate $? "Moving in to app directoty2"
 
  npm install &>> $LOGFILE
- validate $? "NPM Installation"
+ validate $? "NPM dependencies Installation"
 
 #Give full path of catalogue.service file ,because we are inside /app directory
 #Inside the EC2 catalogue linux server when we clone the code the file location will be on /home/centos/roboshop-shell/catalogue.service which is normal user location and script we are executing with sudo user credentials so we need to specify the full path explicitly
  cp /home/centos/roboshop-shell/catalogue.service /etc/systemd/system/catalogue.service &>> $LOGFILE
- validate $? "NPM Installation"
+ validate $? "Copying Catalogue.service"
 
  systemctl daemon-reload &>> $LOGFILE
  validate $? "daemon reload"
@@ -69,13 +69,16 @@
  validate $? "Start the service by enabling"
 
  systemctl start catalogue &>> $LOGFILE
-  validate $? "Start catalogue"
+  validate $? "Starting catalogue"
 
   cp /home/centos/roboshop-shell/mongo.repo /etc/yum.repos.d/mongo.repo &>> $LOGFILE
+  validate $? "Copying mongo repo"
 
   yum install mongodb-org-shell -y &>> $LOGFILE
+  validate $? "installing mongo Client"
 
   mongo --host mongodb.joindevops.icu </app/schema/catalogue.js &>> $LOGFILE
+  validate $? "Loading catalogue data in to mongo db"
 
 
 
