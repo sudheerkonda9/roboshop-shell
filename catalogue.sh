@@ -36,7 +36,7 @@
 #Once the user is created, if you run this script second time , this command will fail definitely 
 #Improvement :First check whether the user already exists or not , if not exists then create user
  useradd roboshop &>> $LOGFILE
- validate $? "Adding Roboshop User"
+#  validate $? "Adding Roboshop User"
 
 #write a condition to check directory already exists or not
  mkdir /app &>> $LOGFILE
