@@ -57,8 +57,8 @@ validate $? "daemon reload"
  validate $? "Start the service by enabling"
  systemctl start user &>> $LOGFILE
  validate $? "Starting catalogue"
-cp mongo.repo /etc/yum.repos.d/mongo.repo &>> $LOGFILE
-validate $? "Copied mongo.repo into yum.repos.d"
+ cp /home/centos/roboshop-shell/mongo.repo /etc/yum.repos.d/mongo.repo &>> $LOGFILE
+ validate $? "Copied mongo.repo into yum.repos.d"
 
  yum install mongodb-org-shell -y &>> $LOGFILE
  validate $? "installing mongo Client"
